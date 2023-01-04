@@ -15,6 +15,8 @@ export class EmpleadoHijoCComponent implements OnInit {
 
   agregarCaracteristica(nuevaCaracteristica: string) {
     this.arrayCaracteristicas.push(nuevaCaracteristica);
+
+
   }
   
   
