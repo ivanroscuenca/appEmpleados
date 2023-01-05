@@ -35,7 +35,7 @@ agregarEmpleado(){
   let miEmpleado = new Empleado(this.cuadroNombre,this.cuadroApellido,this.cuadroCargo,this.cuadroSalario);
 
   //usamos el servicio
-  this.miServicio.muestraMensaje("Nombre del empleado: " + miEmpleado.nombre);
+  //this.miServicio.muestraMensaje("Nombre del empleado: " + miEmpleado.nombre);
 
   //llamamos al servicio
   this.empleadosService.agregarEmpleadoServicio(miEmpleado);
