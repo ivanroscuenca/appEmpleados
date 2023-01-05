@@ -13,10 +13,8 @@ export class EmpleadoHijoCComponent implements OnInit {
 
   arrayCaracteristicas = [''];
 
-  agregarCaracteristica(nuevaCaracteristica: string) {
+  agregarCaracteristica(nuevaCaracteristica:string){
     this.arrayCaracteristicas.push(nuevaCaracteristica);
-
-
   }
   
   
