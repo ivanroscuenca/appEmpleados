@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { EmpleadosService } from './empleados.service';
 import { ServicioEmpleadosService } from './servicio-empleados.service';
 
 @Component({
@@ -9,20 +10,19 @@ import { ServicioEmpleadosService } from './servicio-empleados.service';
 })
 
 //Exporta clase 
-export class AppComponent {
+export class AppComponent implements OnInit {
   titulo ='Listado de Empleados';
 //inyectamos servicio a través de un contructor
-constructor(private miServicio:ServicioEmpleadosService){
+constructor(private miServicio:ServicioEmpleadosService, private empleadosService:EmpleadosService){
+//this.empleados=this.empleadosService.empleados;
 
 }
+  ngOnInit(): void {
+    this.empleados=this.empleadosService.empleados;
+  }
 
 
-  empleados:Empleado[]= [
-    new Empleado("Juan","Díaz","Presidente",7500),
-    new Empleado("José","Fernandez","Gerente",5500),
-    new Empleado("María","Perez","Directora RRHH",3500),
-    new Empleado("Ana","Sánchez","Administrativa",1500)
-  ];
+  empleados:Empleado[]= [];
 
 cuadroNombre:string="";
 cuadroApellido:string="";
@@ -37,8 +37,9 @@ agregarEmpleado(){
   //usamos el servicio
   this.miServicio.muestraMensaje("Nombre del empleado: " + miEmpleado.nombre);
 
-  //Añadir dentro del array empleados
-  this.empleados.push(miEmpleado);
+  //llamamos al servicio
+  this.empleadosService.agregarEmpleadoServicio(miEmpleado);
+ 
 }
 
 }
