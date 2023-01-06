@@ -6,6 +6,19 @@ import { ServicioEmpleadosService } from "./servicio-empleados.service";
 //decorador injectable nos dice que se va a inyectar
 @Injectable()
 export class EmpleadosService  {
+  actualizarEmpleado(indice: number, empleado: Empleado) {
+    let empleadoModificado = this.empleados[indice];
+
+    empleadoModificado.nombre=empleado.nombre;
+    empleadoModificado.apellido=empleado.apellido;
+    empleadoModificado.cargo=empleado.cargo;
+    empleadoModificado.salario=empleado.salario;
+
+  }
+  encontrarEmpleado(indice: number) {
+    let empleado:Empleado=this.empleados[indice];
+    return empleado;
+  }
 
   //necesitamos constructor para injectable
   constructor(private servicioVentanaEmergente:ServicioEmpleadosService){
@@ -27,5 +40,7 @@ export class EmpleadosService  {
         this.empleados.push(empleado);
 
       }
+
+
 
 }
