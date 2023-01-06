@@ -6,6 +6,9 @@ import { ServicioEmpleadosService } from "./servicio-empleados.service";
 //decorador injectable nos dice que se va a inyectar
 @Injectable()
 export class EmpleadosService  {
+  eliminarEmpleado(indice: number) {
+    this.empleados.splice(indice,1);
+  }
   actualizarEmpleado(indice: number, empleado: Empleado) {
     let empleadoModificado = this.empleados[indice];
 

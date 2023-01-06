@@ -55,4 +55,12 @@ let empleado:Empleado = this.empleadosService.encontrarEmpleado(this.indice);
       this.router.navigate([""]);
   
     }
+
+    eliminaEmpleado(){
+      this.empleadosService.eliminarEmpleado(this.indice);
+  
+      this.router.navigate([""]);
+    }
+
+    
 }
