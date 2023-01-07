@@ -2,10 +2,15 @@
   <div class="row">
     <div class="column">
       <div>
-        <a [routerLink]="['/actualiza',indice]">
-        {{indice+1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}} </a> {{empleadoDeLista.cargo}}
+        {{indice+1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}} {{empleadoDeLista.cargo}}
         {{empleadoDeLista.salario}}
-      
+        
+        <a [routerLink]="['/actualiza',indice]" [queryParams]="{accion:'1'}" id="a1">
+          ACTUALIZA
+        </a>
+        <a [routerLink]="['/actualiza',indice]" [queryParams]="{accion:'2'}" id="a2">
+          ELIMINA
+        </a>
       </div>
 
       <app-caracteristicas-empleado-c

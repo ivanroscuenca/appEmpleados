@@ -12,35 +12,35 @@ import { ServicioEmpleadosService } from '../servicio-empleados.service';
 export class ActualizaComponentComponent implements OnInit {
   indice: number;
 
-  constructor(private router:Router, private route:ActivatedRoute, private miServicio: ServicioEmpleadosService, private empleadosService: EmpleadosService){
-    
+  constructor(private router: Router, private route: ActivatedRoute, private miServicio: ServicioEmpleadosService, private empleadosService: EmpleadosService) {
+
   }
-    ngOnInit(): void {
-      this.empleados = this.empleadosService.empleados;
-this.indice= this.route.snapshot.params['id'];
-let empleado:Empleado = this.empleadosService.encontrarEmpleado(this.indice);
+  accion: number;
+
+  ngOnInit(): void {
+    this.accion = parseInt(this.route.snapshot.queryParams['accion']);
+    this.empleados = this.empleadosService.empleados;
+    this.indice = this.route.snapshot.params['id'];
+    let empleado: Empleado = this.empleadosService.encontrarEmpleado(this.indice);
     this.cuadroNombre = empleado.nombre;
-    this.cuadroApellido=empleado.apellido;
-    this.cuadroCargo= empleado.cargo;
-    this.cuadroSalario= empleado.salario;
+    this.cuadroApellido = empleado.apellido;
+    this.cuadroCargo = empleado.cargo;
+    this.cuadroSalario = empleado.salario;
 
+  }
 
+  volverHome() {
 
+    this.router.navigate([""]);
 
-}
-  
-    volverHome(){
-  
-      this.router.navigate([""]);
-  
-    }
-  
-    empleados: Empleado[] = [];
-    cuadroNombre: string = "";
-    cuadroApellido: string = "";
-    cuadroCargo: string = "";
-    cuadroSalario: number = 0;
-  
+  }
+
+  empleados: Empleado[] = [];
+  cuadroNombre: string = "";
+  cuadroApellido: string = "";
+  cuadroCargo: string = "";
+  cuadroSalario: number = 0;
+  /*
     actualizaEmpleado() {
   
       //creamos una variable y guardamos datos
@@ -52,15 +52,32 @@ let empleado:Empleado = this.empleadosService.encontrarEmpleado(this.indice);
       //llamamos al servicio
       this.empleadosService.actualizarEmpleado(this.indice,miEmpleado);
   
-      this.router.navigate([""]);
+      this.router.navigate(['']);
   
     }
 
     eliminaEmpleado(){
       this.empleadosService.eliminarEmpleado(this.indice);
   
-      this.router.navigate([""]);
+      this.router.navigate(['']);
+    }
+*/
+  actualizaEmpleado() {
+
+    if (this.accion == 1) {
+      let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+
+      this.empleadosService.actualizarEmpleado(this.indice, miEmpleado);
+
+      this.router.navigate(['']);
+    } else {
+      this.empleadosService.eliminarEmpleado(this.indice);
+
+      this.router.navigate(['']);
     }
 
-    
+
+
+  }
+
 }
