@@ -1,6 +1,7 @@
 //Creamos servicio que tendría que hacer consulta a BBDD
 
 import { Injectable } from "@angular/core";
+import { DataServices } from "./data.services";
 import { Empleado } from "./empleado.model";
 import { ServicioEmpleadosService } from "./servicio-empleados.service";
 //decorador injectable nos dice que se va a inyectar
@@ -24,7 +25,7 @@ export class EmpleadosService  {
   }
 
   //necesitamos constructor para injectable
-  constructor(private servicioVentanaEmergente:ServicioEmpleadosService){
+  constructor(private servicioVentanaEmergente:ServicioEmpleadosService,private DataService:DataServices){
 
   }
 
@@ -41,6 +42,8 @@ export class EmpleadosService  {
         empleado.nombre + "\n"+ "salario: " + empleado.salario);
          //Añadir dentro del array empleados
         this.empleados.push(empleado);
+        //utilizamos guardar en data base
+        this.DataService.guardarEmpleados(this.empleados);
 
       }
 
