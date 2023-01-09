@@ -29,12 +29,17 @@ export class EmpleadosService  {
 
   }
 
-    empleados:Empleado[]= [
+  obtenerEmpleados(){
+    return this.DataService.cargarEmpleados();
+  }
+  empleados:Empleado[]=[];
+
+   /*empleados:Empleado[]= [
         new Empleado("Juan","Díaz","Presidente",7500),
         new Empleado("José","Fernandez","Gerente",5500),
         new Empleado("María","Perez","Directora RRHH",3500),
         new Empleado("Ana","Sánchez","Administrativa",1500)
-      ];
+      ];*/
 
       agregarEmpleadoServicio(empleado:Empleado){
          //llamar al servicio
