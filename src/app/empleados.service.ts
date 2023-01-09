@@ -17,6 +17,7 @@ export class EmpleadosService  {
     empleadoModificado.apellido=empleado.apellido;
     empleadoModificado.cargo=empleado.cargo;
     empleadoModificado.salario=empleado.salario;
+    this.DataService.actualizarEmpleado(indice,empleado);
 
   }
   encontrarEmpleado(indice: number) {
