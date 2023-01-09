@@ -28,6 +28,9 @@ export class EmpleadosService  {
   constructor(private servicioVentanaEmergente:ServicioEmpleadosService,private DataService:DataServices){
 
   }
+  setEmpleados(misEmpleados:Empleado[]){
+    this.empleados=misEmpleados;
+  }
 
   obtenerEmpleados(){
     return this.DataService.cargarEmpleados();
