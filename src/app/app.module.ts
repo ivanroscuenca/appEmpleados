@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { EmpleadoHijoCComponent } from './empleado-hijo-c/empleado-hijo-c.component';
 import { CaracteristicasEmpleadoCComponent } from './caracteristicas-empleado-c/caracteristicas-empleado-c.component';
@@ -18,6 +17,8 @@ import { DataServices } from './data.services';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
+import { CookieService } from 'ngx-cookie-service';
+
 //creamos las rutas
 const appRoutes:Routes = [
  
@@ -49,7 +50,7 @@ const appRoutes:Routes = [
     HttpClientModule
   ],
   //declaramos el servicio
-  providers: [ServicioEmpleadosService,EmpleadosService,DataServices,LoginComponent,LoginService],
+  providers: [ServicioEmpleadosService,EmpleadosService,DataServices,LoginComponent,LoginService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
