@@ -17,6 +17,7 @@ import { ErrorPersonalizadoComponent } from './error-personalizado/error-persona
 import { DataServices } from './data.services';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './login.service';
 //creamos las rutas
 const appRoutes:Routes = [
  
@@ -48,7 +49,7 @@ const appRoutes:Routes = [
     HttpClientModule
   ],
   //declaramos el servicio
-  providers: [ServicioEmpleadosService,EmpleadosService,DataServices,LoginComponent],
+  providers: [ServicioEmpleadosService,EmpleadosService,DataServices,LoginComponent,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
