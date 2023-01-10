@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import firebase from 'firebase/compat/app';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import firebase from 'firebase/compat/app';
 
 export class AppComponent implements OnInit {
 
-  constructor() {
+  constructor(private loginService:LoginService) {
 
   }
   ngOnInit(): void {
@@ -21,5 +22,12 @@ export class AppComponent implements OnInit {
     });
   }
 
+  estaLogueado(){
+    return this.loginService.estaLogueado();
+  }
+
+  logout(){
+    this.loginService.logout();
+  }
 
 }
